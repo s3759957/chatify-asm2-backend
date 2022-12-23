@@ -24,15 +24,15 @@ public class Database {
             @Override
             public void run(String... args) throws Exception {
 //                Message messageA = new Message("asc",false, "asdas", 38L);
-//                Message messageB = new Message("asc11",false, "11", 38L);
-//                Conversation conA = new Conversation("qwe");
+                Message messageB = new Message("asc11", "11", 38L);
+                Conversation conA = new Conversation("ABC");
 //                Conversation conB = new Conversation("qw12e");
                 User userA = new User("billie","billie@gmail.com","123123", "");
                 logger.info("insert data: "+userRepository.save(userA));
 //                logger.info("insert data: "+messageRepository.save(messageA));
 //                logger.info("insert data: "+messageRepository.save(messageA));
-//                logger.info("insert data: "+messageRepository.save(messageB));
-//                logger.info("insert data: "+conversationRepository.save(conA));
+                logger.info("insert data: "+messageRepository.save(messageB));
+                logger.info("insert data: "+conversationRepository.save(conA));
 //                logger.info("insert data: "+conversationRepository.save(conB));
             }
         };

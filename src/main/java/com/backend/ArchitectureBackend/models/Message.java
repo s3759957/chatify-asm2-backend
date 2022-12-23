@@ -7,7 +7,7 @@ import java.time.Instant;
 
 //POJO = Plain Object Java Object
 @Entity
-@Table(name="Messages")
+@Table(name="messages")
 public class Message {
     //this is "primary key"
     @Id

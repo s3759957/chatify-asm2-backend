@@ -3,6 +3,7 @@ package com.backend.ArchitectureBackend.controllers;
 import com.backend.ArchitectureBackend.models.ResponseObject;
 import com.backend.ArchitectureBackend.models.Message;
 import com.backend.ArchitectureBackend.repositories.MessageRepository;
+import com.backend.ArchitectureBackend.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,32 +14,26 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping(path = "/Messages")
+@RequestMapping(path = "/messages")
 @CrossOrigin(origins = "*")
 public class MessageController {
     //DI = Dependency Injection
     @Autowired
-    private MessageRepository repository;
+    private MessageService service;
 
     @GetMapping("")
         //this request is: http://localhost:5432/Messages
     List<Message> getAllMessages() {
-        return repository.findAll();
+        return service.getAllMessages();
     }
 
     @GetMapping("/{id}")
     ResponseEntity<ResponseObject> findById(@PathVariable Long id) {
-        Optional<Message> foundMessage = repository.findById(id);
-        return foundMessage.isPresent() ?
-                ResponseEntity.status(HttpStatus.OK).body(
-                        new ResponseObject("ok", "query product successfully", foundMessage)) :
-                ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-                        new ResponseObject("failed", "Cannot find message with id: ", ""));
+        return service.findById(id);
     }
 
     @PostMapping("/insert")
     ResponseEntity<ResponseObject> insertMessage(@RequestBody Message newMessage) {
-        return ResponseEntity.status(HttpStatus.OK).body(
-                new ResponseObject("ok", "query product successfully", repository.save(newMessage)));
+        return insertMessage(newMessage);
     }
 }

@@ -5,7 +5,7 @@ import java.util.*;
 
 //POJO = Plain Object Java Object
 @Entity
-@Table(name="Users")
+@Table(name="users")
 public class User {
     //this is "primary key"
     @Id
