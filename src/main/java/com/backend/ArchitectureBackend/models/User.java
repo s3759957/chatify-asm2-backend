@@ -13,42 +13,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO) //auto-increment
     private Long id;
     @Column
-    private String userName;
+    private String username;
     @Column
     private String email;
     @Column
     private String password;
     @Column
-    private String avatar;
-    @Column
     private String status;
-    @Column
-    private Boolean isOnline;
-    @Column
-    private Boolean isDeactivated;
-    @Column
-    private ArrayList<Long> convoList;
-    @Column
-    private ArrayList<Long> friendList;
 
     public User() {
         this.status = "";
-        this.isOnline = false;
-        this.isDeactivated = false;
-        this.convoList = new ArrayList<Long>();
-        this.friendList = new ArrayList<Long>();
     }
 
-    public User(String userName, String email, String password, String avatar) {
-        this.userName = userName;
+    public User(String username, String email, String password, String avatar) {
+        this.username = username;
         this.email = email;
         this.password = password;
-        this.avatar = avatar;
         this.status = "";
-        this.isOnline = false;
-        this.isDeactivated = false;
-        this.convoList = new ArrayList<Long>();
-        this.friendList = new ArrayList<Long>();
     }
 
     public Long getId() {
@@ -60,11 +41,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getEmail() {
@@ -83,14 +64,6 @@ public class User {
         this.password = password;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -99,51 +72,14 @@ public class User {
         this.status = status;
     }
 
-    public Boolean getOnline() {
-        return isOnline;
-    }
-
-    public void setOnline(Boolean online) {
-        isOnline = online;
-    }
-
-    public Boolean getDeactivated() {
-        return isDeactivated;
-    }
-
-    public void setDeactivated(Boolean deactivated) {
-        isDeactivated = deactivated;
-    }
-
-    public ArrayList<Long> getConvoList() {
-        return convoList;
-    }
-
-    public void setConvoList(ArrayList<Long> convoList) {
-        this.convoList = convoList;
-    }
-
-    public ArrayList<Long> getFriendList() {
-        return friendList;
-    }
-
-    public void setFriendList(ArrayList<Long> friendList) {
-        this.friendList = friendList;
-    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", avatar='" + avatar + '\'' +
                 ", status='" + status + '\'' +
-                ", isOnline=" + isOnline +
-                ", isDeactivated=" + isDeactivated +
-                ", convoList=" + convoList +
-                ", friendList=" + friendList +
                 '}';
     }
 }

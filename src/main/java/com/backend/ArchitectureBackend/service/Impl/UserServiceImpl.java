@@ -52,11 +52,8 @@ public class UserServiceImpl implements UserService {
         User updatedUser = userRepository.findById(id).map(user -> {
             user.setUserName(newUser.getUserName());
             user.setPassword(newUser.getPassword());
-            user.setAvatar(newUser.getAvatar());
             if (foundUsers.size() == 0) user.setEmail(newUser.getEmail());
             user.setStatus(newUser.getStatus());
-            user.setOnline(newUser.getOnline());
-            user.setDeactivated(newUser.getDeactivated());
             return userRepository.save(user);
         }).orElseGet(() -> {
             newUser.setId(id);
